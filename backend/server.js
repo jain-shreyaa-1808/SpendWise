@@ -10,7 +10,7 @@ import dashboardRouter from "./routes/dashboardRoute.js";
 import path from "path";
 
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000;
 const _dirname = path.resolve();
 // MIDDLEWARES
 app.use(cors());
