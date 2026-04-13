@@ -1,8 +1,9 @@
-import React, { Activity, useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { styles } from "../assets/dummyStyles";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import {
+  Activity,
   ArrowDown,
   ArrowUp,
   Car,
@@ -80,10 +81,13 @@ const Layout = ({ onLogout, user }) => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   // to fetch the transaction from the server side
+  const getToken = () =>
+    localStorage.getItem("token") || sessionStorage.getItem("token");
+
   const fetchTransactions = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem("token");
+      const token = getToken();
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
       const [incomeRes, expenseRes] = await Promise.all([
@@ -127,7 +131,7 @@ const Layout = ({ onLogout, user }) => {
   //to add transaction either income or expense
   const addTransaction = async (transaction) => {
     try {
-      const token = localStorage.getItem("token");
+      const token = getToken();
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
       const endpoint =
         transaction.type === "income" ? "income/add" : "expense/add";
@@ -146,7 +150,7 @@ const Layout = ({ onLogout, user }) => {
   //to update any transaction
   const editTransaction = async (id, transaction) => {
     try {
-      const token = localStorage.getItem("token");
+      const token = getToken();
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
       const endpoint =
         transaction.type === "income" ? "income/update" : "expense/update";
@@ -167,7 +171,7 @@ const Layout = ({ onLogout, user }) => {
   //to delete a transaction
   const deleteTransaction = async (id, type) => {
     try {
-      const token = localStorage.getItem("token");
+      const token = getToken();
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
       const endpoint = type === "income" ? "income/delete" : "expense/delete";
       await axios.delete(`${API_BASE}/${endpoint}/${id}`, { headers });

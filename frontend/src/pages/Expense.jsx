@@ -30,7 +30,7 @@ import { getTimeFrameRange, generateChartPoints } from "../components/Helpers";
 import { CATEGORY_ICONS } from "../assets/color";
 import { expensePageStyles as styles } from "../assets/dummyStyles";
 
-const API_BASE = "https://spendwise-iaes.onrender.com/api";
+const API_BASE = "/api";
 
 function toIsoWithClientTime(dateValue) {
   if (!dateValue) {
@@ -81,7 +81,7 @@ const ExpensePage = () => {
     type: "expense",
     category: "Food",
   });
-  const [setOverview] = useState({
+  const [overview, setOverview] = useState({
     totalExpense: 0,
     averageExpense: 0,
     numberOfTransactions: 0,
@@ -89,9 +89,9 @@ const ExpensePage = () => {
     range: "monthly",
   });
 
-  // Auth headers helper
   const getAuthHeaders = useCallback(() => {
-    const token = localStorage.getItem("token");
+    const token =
+      localStorage.getItem("token") || sessionStorage.getItem("token");
     return token ? { Authorization: `Bearer ${token}` } : {};
   }, []);
 

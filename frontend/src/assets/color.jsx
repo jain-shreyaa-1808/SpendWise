@@ -1,36 +1,36 @@
-// constants/financeConstants.js
-// constants/financeConstants.js
-import { 
-  Utensils, Home, Car, ShoppingCart, Gift, 
-  TrendingUp, TrendingDown, DollarSign, 
-  BarChart2, ArrowUp, FileText, 
-  Briefcase, CreditCard, ShoppingBag, 
-  Film, Wifi, Heart
+import {
+  Utensils, Home, Car, ShoppingCart, Gift,
+  TrendingUp, TrendingDown, DollarSign,
+  BarChart2, ArrowUp, FileText,
+  Briefcase, CreditCard, ShoppingBag,
+  Film, Wifi, Heart, Zap, Coffee, Plane
 } from "lucide-react";
 
-
 export const GAUGE_COLORS = {
-  Income: { 
-    gradientStart: '#0d9488',
-    gradientEnd: '#0f766e',
-    text: 'text-teal-600',
-    bg: 'bg-teal-100'
+  Income: {
+    gradientStart: '#10b981',
+    gradientEnd: '#059669',
+    text: 'text-emerald-600',
+    bg: 'bg-emerald-100'
   },
-  Spent: { 
-    gradientStart: '#f97316',
-    gradientEnd: '#ea580c',
-    text: 'text-orange-600',
-    bg: 'bg-orange-100'
+  Spent: {
+    gradientStart: '#f43f5e',
+    gradientEnd: '#e11d48',
+    text: 'text-rose-600',
+    bg: 'bg-rose-100'
   },
-  Savings: { 
-    gradientStart: '#0891b2',
-    gradientEnd: '#0e7490',
-    text: 'text-cyan-600',
-    bg: 'bg-cyan-100'
+  Savings: {
+    gradientStart: '#7c3aed',
+    gradientEnd: '#6d28d9',
+    text: 'text-violet-600',
+    bg: 'bg-violet-100'
   }
 };
 
-export const COLORS = ['#0d9488', '#0f766e', '#0891b2', '#0e7490', '#f97316', '#ea580c', '#14b8a6'];
+export const COLORS = [
+  '#7c3aed', '#4f46e5', '#0ea5e9', '#10b981',
+  '#f43f5e', '#f59e0b', '#8b5cf6', '#06b6d4'
+];
 
 export const INCOME_COLORS = [
   '#10b981', '#34d399', '#6ee7b7', '#a7f3d0', '#d1fae5'
@@ -49,49 +49,50 @@ export const CATEGORY_ICONS = {
   Housing: <Home className="w-4 h-4" />,
   Transport: <Car className="w-4 h-4" />,
   Shopping: <ShoppingCart className="w-4 h-4" />,
-  Entertainment: <Gift className="w-4 h-4" />,
-  Utilities: <Home className="w-4 h-4" />,
-  Healthcare: <Gift className="w-4 h-4" />,
-  Salary: <TrendingUp className="w-4 h-4" />,
-  Freelance: <TrendingDown className="w-4 h-4" />,
+  Entertainment: <Film className="w-4 h-4" />,
+  Utilities: <Zap className="w-4 h-4" />,
+  Healthcare: <Heart className="w-4 h-4" />,
+  Salary: <Briefcase className="w-4 h-4" />,
+  Freelance: <CreditCard className="w-4 h-4" />,
   Other: <DollarSign className="w-4 h-4" />
 };
 
-// Enhanced category icons with more specific icons for income categories
 export const INCOME_CATEGORY_ICONS = {
-  Salary: <Briefcase className="w-5 h-5 text-green-500" />,
-  Freelance: <CreditCard className="w-5 h-5 text-green-500" />,
-  Investment: <TrendingUp className="w-5 h-5 text-green-500" />,
-  Gift: <Gift className="w-5 h-5 text-green-500" />,
-  Other: <DollarSign className="w-5 h-5 text-green-500" />,
+  Salary: <Briefcase className="w-5 h-5 text-emerald-500" />,
+  Freelance: <Plane className="w-5 h-5 text-emerald-500" />,
+  Investment: <TrendingUp className="w-5 h-5 text-emerald-500" />,
+  Gift: <Gift className="w-5 h-5 text-emerald-500" />,
+  Bonus: <Zap className="w-5 h-5 text-emerald-500" />,
+  Other: <DollarSign className="w-5 h-5 text-emerald-500" />,
 };
 
 export const EXPENSE_CATEGORY_ICONS = {
-  Food: <Utensils className="w-5 h-5 text-orange-500" />,
-  Housing: <Home className="w-5 h-5 text-orange-500" />,
-  Transport: <Car className="w-5 h-5 text-orange-500" />,
-  Shopping: <ShoppingBag className="w-5 h-5 text-orange-500" />,
-  Entertainment: <Film className="w-5 h-5 text-orange-500" />,
-  Utilities: <Wifi className="w-5 h-5 text-orange-500" />,
-  Healthcare: <Heart className="w-5 h-5 text-orange-500" />,
-  Other: <ShoppingCart className="w-5 h-5 text-orange-500" />,
+  Food: <Utensils className="w-5 h-5 text-rose-400" />,
+  Housing: <Home className="w-5 h-5 text-rose-400" />,
+  Transport: <Car className="w-5 h-5 text-rose-400" />,
+  Shopping: <ShoppingBag className="w-5 h-5 text-rose-400" />,
+  Entertainment: <Film className="w-5 h-5 text-rose-400" />,
+  Utilities: <Zap className="w-5 h-5 text-rose-400" />,
+  Healthcare: <Heart className="w-5 h-5 text-rose-400" />,
+  Coffee: <Coffee className="w-5 h-5 text-rose-400" />,
+  Other: <ShoppingCart className="w-5 h-5 text-rose-400" />,
 };
 
 export const colorClasses = {
-    income: {
-      bg: "bg-teal-100",
-      text: "text-teal-600",
-      border: "border-teal-200",
-      ring: "ring-teal-500",
-      button: "bg-teal-500 hover:bg-teal-600 text-white",
-      iconBg: "bg-teal-100 text-teal-600",
-    },
-    expense: {
-      bg: "bg-orange-100",
-      text: "text-orange-600",
-      border: "border-orange-200",
-      ring: "ring-orange-500",
-      button: "bg-orange-500 hover:bg-orange-600 text-white",
-      iconBg: "bg-orange-100 text-orange-600",
-    },
-  };
+  income: {
+    bg: "bg-emerald-50",
+    text: "text-emerald-600",
+    border: "border-emerald-200",
+    ring: "ring-emerald-500",
+    button: "bg-emerald-500 hover:bg-emerald-600 text-white",
+    iconBg: "bg-emerald-100 text-emerald-600",
+  },
+  expense: {
+    bg: "bg-rose-50",
+    text: "text-rose-600",
+    border: "border-rose-200",
+    ring: "ring-rose-500",
+    button: "bg-rose-500 hover:bg-rose-600 text-white",
+    iconBg: "bg-rose-100 text-rose-600",
+  },
+};

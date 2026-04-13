@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 
-const BASE_URL = "https://spendwise-iaes.onrender.com/api";
+const BASE_URL = "/api";
 
 Modal.setAppElement("#root");
 // Move PasswordInput component outside of ProfilePage to prevent recreation on every render
@@ -71,7 +71,10 @@ const Profile = ({ onUpdateProfile, onLogout }) => {
   const [passwordErrors, setPasswordErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const getAuthToken = useCallback(() => localStorage.getItem("token"), []);
+  const getAuthToken = useCallback(
+    () => localStorage.getItem("token") || sessionStorage.getItem("token"),
+    []
+  );
 
   // API request
   const handleApiRequest = useCallback(

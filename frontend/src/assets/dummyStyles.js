@@ -1,725 +1,606 @@
-// assets/dummyStyles.js
+// dummyStyles.js — SpendWise Design System (Violet/Purple theme)
 
 export const dashboardStyles = {
-  // Layout styles
   container: "min-h-screen p-4 md:p-6",
-  
-  // Header styles
-  headerContainer: "bg-gradient-to-r from-teal-500/10 to-cyan-500/10 backdrop-blur-lg rounded-3xl p-6 mb-8 shadow-lg border border-white/30",
-  headerContent: "flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8",
-  headerTitle: "text-3xl md:text-4xl font-bold bg-gradient-to-r from-teal-600 to-cyan-700 bg-clip-text text-transparent",
-  headerSubtitle: "text-gray-600 mt-2",
-  
-  // Button styles
-  addButton: "flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white px-5 py-3 rounded-xl transition-all shadow hover:shadow-md font-medium",
-  
-  // Time frame selector styles
-  timeFrameContainer: "flex justify-end mt-4",
-  timeFrameWrapper: "flex gap-0 bg-white p-1 -mx-5 rounded-xl border border-gray-200",
-  timeFrameButton: (isActive) => 
-    `px-2.5 py-2 text-sm rounded-lg transition-all ${
-      isActive 
-        ? "bg-teal-500 text-white" 
-        : "text-gray-600 hover:bg-gray-100"
+
+  headerContainer: "bg-gradient-to-br from-violet-600 via-indigo-600 to-purple-700 rounded-2xl p-6 mb-8 shadow-xl relative overflow-hidden",
+  headerContent: "flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6",
+  headerTitle: "text-3xl md:text-4xl font-bold text-white",
+  headerSubtitle: "text-violet-200 mt-1 text-sm",
+
+  addButton: "flex items-center gap-2 bg-white text-violet-700 hover:bg-violet-50 px-5 py-2.5 rounded-xl transition-all shadow-lg hover:shadow-xl font-semibold text-sm",
+
+  timeFrameContainer: "flex justify-end mt-2",
+  timeFrameWrapper: "flex gap-0 bg-white/15 backdrop-blur-sm p-1 rounded-xl border border-white/20",
+  timeFrameButton: (isActive) =>
+    `px-4 py-1.5 text-sm rounded-lg transition-all font-medium ${
+      isActive
+        ? "bg-white text-violet-700 shadow-sm"
+        : "text-white/80 hover:text-white hover:bg-white/10"
     }`,
-  
-  // Summary cards grid
+
   summaryGrid: "grid grid-cols-1 lg:-mx-3 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-5 mb-8",
-  
-  // Financial card styles
-  balanceBadge: "bg-teal-100 text-teal-800 px-2 py-1 rounded-lg text-xs",
-  expenseBadge: "bg-orange-100 text-orange-800 px-1 py-1 rounded-lg text-xs",
-  
-  // Gauge container styles
+
+  balanceBadge: "bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-lg text-xs font-medium",
+  expenseBadge: "bg-rose-100 text-rose-700 px-2 py-0.5 rounded-lg text-xs font-medium",
+
   gaugeGrid: "grid grid-cols-1 -mx-5 xl:-mx-5 md:grid-cols-3 md:gap-13 lg:gap-3 lg:grid-cols-2 xl:grid-cols-3 gap-6 mb-8",
-  
-  // Pie chart container styles
-  pieChartContainer: "hidden md:block bg-white lg:-mx-5.5 md:-mx-4 lg:p-1 xl:-mx-3 rounded-xl p-5 shadow-sm border border-gray-100 relative overflow-hidden mb-8",
+
+  pieChartContainer: "hidden md:block bg-white lg:-mx-5.5 md:-mx-4 lg:p-1 xl:-mx-3 rounded-2xl p-5 shadow-sm border border-slate-100 relative overflow-hidden mb-8",
   pieChartHeader: "flex flex-col sm:flex-row justify-between items-start sm:items-center mb-5 gap-3",
-  pieChartTitle: "text-xl lg:pt-3 xl:pl-3 font-bold text-gray-800 mb-5 flex items-center gap-3",
-  pieChartSubtitle: "text-sm lg:text-center xl:text-start xl:pl-3 text-gray-500 mb-3",
+  pieChartTitle: "text-xl lg:pt-3 xl:pl-3 font-bold text-slate-800 mb-5 flex items-center gap-3",
+  pieChartSubtitle: "text-sm lg:text-center xl:text-start xl:pl-3 text-slate-500 mb-3",
   pieChartHeight: "h-90 xl:h-80",
-  
-  // Pie chart tooltip styles
+
   tooltipContent: {
-    backgroundColor: "rgba(255, 255, 255, 0.95)",
-    border: "1px solid #e5e7eb",
-    borderRadius: "0.75rem",
-    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+    backgroundColor: "rgba(255, 255, 255, 0.97)",
+    border: "1px solid #e2e8f0",
+    borderRadius: "12px",
+    boxShadow: "0 8px 24px rgba(0, 0, 0, 0.1)",
     padding: "12px",
   },
   tooltipItem: { fontWeight: 400 },
-  
-  // Legend styles
+
   legendWrapper: { paddingTop: 8 },
-  legendText: "text-sm font-medium text-gray-600",
-  
-  // Income/Expense lists grid
+  legendText: "text-sm font-medium text-slate-600",
+
   listsGrid: "grid grid-cols-1 gap-6",
-  
-  // List container styles
-  listContainer: "bg-white rounded-2xl lg:p-5 md:p-6 -mx-8 md:-mx-3 shadow-sm border border-gray-100",
+
+  listContainer: "bg-white rounded-2xl lg:p-5 md:p-6 -mx-8 md:-mx-3 shadow-sm border border-slate-100",
   listHeader: "flex flex-col sm:flex-row justify-between items-start sm:items-center mb-5 gap-3",
-  listTitle: "text-xl font-bold text-gray-800 md:mt-3 mt-3 flex items-center gap-3",
-  listSubtitle: "text-sm text-gray-500 font-normal",
-  
-  // Record count badges
-  incomeCountBadge: "text-sm bg-green-100 px-2 mx-2 text-green-800 md:mx-2 md:mt-2 py-1 rounded-full",
-  expenseCountBadge: "text-sm bg-orange-100 text-orange-800 px-2 mx-2 md:mx-2 md:mt-2 py-1 rounded-full",
-  
-  // Transaction item styles
+  listTitle: "text-xl font-bold text-slate-800 md:mt-3 mt-3 flex items-center gap-3",
+  listSubtitle: "text-sm text-slate-400 font-normal",
+
+  incomeCountBadge: "text-sm bg-emerald-100 px-2 mx-2 text-emerald-700 md:mx-2 md:mt-2 py-1 rounded-full font-medium",
+  expenseCountBadge: "text-sm bg-rose-100 text-rose-700 px-2 mx-2 md:mx-2 md:mt-2 py-1 rounded-full font-medium",
+
   transactionList: "space-y-3",
-  incomeTransactionItem: "flex items-center px-2 mx-2 my-2 md:p-4 md:mx-2 lg:px-3 justify-between p-3 bg-green-50 rounded-lg",
-  expenseTransactionItem: "flex items-center justify-between mx-1 p-3 lg:p-3 md:p-4 md:mx-2 bg-orange-50 rounded-lg",
-  
-  // Transaction icon container
-  incomeIconContainer: "p-2 bg-green-100 rounded-lg",
-  expenseIconContainer: "p-2 bg-orange-100 rounded-lg",
-  
-  // Transaction content
+  incomeTransactionItem: "flex items-center px-2 mx-2 my-2 md:p-4 md:mx-2 lg:px-3 justify-between p-3 bg-emerald-50 rounded-xl hover:bg-emerald-100/60 transition-colors",
+  expenseTransactionItem: "flex items-center justify-between mx-1 p-3 lg:p-3 md:p-4 md:mx-2 bg-rose-50 rounded-xl hover:bg-rose-100/60 transition-colors",
+
+  incomeIconContainer: "p-2.5 bg-emerald-100 rounded-xl",
+  expenseIconContainer: "p-2.5 bg-rose-100 rounded-xl",
+
   transactionContent: "flex items-center lg:gap-3 md:gap-3 gap-1",
-  transactionDescription: "font-medium text-gray-800",
-  transactionCategory: "text-sm text-gray-500",
+  transactionDescription: "font-semibold text-slate-800 text-sm",
+  transactionCategory: "text-xs text-slate-500 mt-0.5",
   transactionAmount: "text-right",
-  incomeAmount: "font-bold text-green-600",
-  expenseAmount: "font-bold text-orange-600",
-  transactionDate: "text-sm text-gray-500",
-  
-  // Empty state styles
+  incomeAmount: "font-bold text-emerald-600",
+  expenseAmount: "font-bold text-rose-600",
+  transactionDate: "text-xs text-slate-400",
+
   emptyState: "text-center py-8",
   emptyIconContainer: (color) => `w-16 h-16 mx-auto mb-4 rounded-full ${color} flex items-center justify-center`,
-  emptyText: "text-gray-600 font-medium",
-  
-  // View all button styles
-  viewAllContainer: "pt-4 border-t border-gray-100",
-  viewAllButton: "w-full flex items-center justify-center gap-2 py-3 text-teal-600 font-medium hover:bg-teal-50 rounded-xl transition-colors",
-  
-  // Icon container styles
-  iconContainer: (color) => `p-2 ${color} rounded-lg`,
-  
-  // Specific icon colors
-  walletIconContainer: "p-2 bg-teal-100 rounded-lg",
-  arrowDownIconContainer: "p-2 bg-orange-100 rounded-lg",
-  piggyBankIconContainer: "p-2 bg-cyan-100 rounded-lg",
+  emptyText: "text-slate-500 font-medium",
+
+  viewAllContainer: "pt-4 border-t border-slate-100",
+  viewAllButton: "w-full flex items-center justify-center gap-2 py-3 text-violet-600 font-semibold hover:bg-violet-50 rounded-xl transition-colors text-sm",
+
+  iconContainer: (color) => `p-2.5 ${color} rounded-xl`,
+
+  walletIconContainer: "p-2.5 bg-violet-100 rounded-xl",
+  arrowDownIconContainer: "p-2.5 bg-rose-100 rounded-xl",
+  piggyBankIconContainer: "p-2.5 bg-indigo-100 rounded-xl",
 };
 
-// Additional styles for financial trends
 export const trendStyles = {
-  positive: "text-orange-600",
-  negative: "text-green-600",
-  positiveRate: "bg-teal-100 text-teal-700",
+  positive: "text-rose-600",
+  negative: "text-emerald-600",
+  positiveRate: "bg-violet-100 text-violet-700",
   negativeRate: "bg-red-100 text-red-700",
 };
 
-// Chart specific styles
 export const chartStyles = {
   pieChart: "lg:-px-5 lg:text-xs xl:text-xl",
 };
 
-// Add to existing dummyStyles.js
 export const incomeStyles = {
-  // Layout
   wrapper: "space-y-4 md:space-y-6 p-3 md:p-4 max-w-7xl mx-auto",
-  headerContainer: "bg-white rounded-lg md:rounded-xl p-4 -mx-7 lg:-mx-7 overflow-x-hidden md:p-6 mb-6 md:mb-8 shadow",
+  headerContainer: "bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-600 rounded-2xl -mx-7 lg:-mx-7 overflow-x-hidden p-4 md:p-6 mb-6 md:mb-8 shadow-xl",
   header: "flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 md:gap-4 mb-4 md:mb-6",
-  headerTitle: "text-xl md:text-2xl lg:text-3xl font-bold text-gray-800",
-  headerSubtitle: "text-gray-600 mt-1 text-sm md:text-base",
-  addButton: "flex items-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-3 py-2 md:px-4 md:py-3 rounded-lg md:rounded-xl transition-all shadow-md hover:shadow-lg font-medium text-sm md:text-base",
-  
-  // Summary Cards
-  summaryGrid: "grid grid-cols-1 -mx-4 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-5",
-  
-  // Chart
-  chartContainer: "hidden md:block -mx-7 bg-white rounded-xl p-6 shadow-sm border border-gray-100",
-  chartTitle: "text-lg md:text-xl font-bold text-gray-800 mb-4 md:mb-5 flex items-center gap-2 md:gap-3",
-  
-  // Transaction List
-  listContainer: "bg-white rounded-xl -mx-7 md:rounded-2xl p-4 md:p-6 shadow-sm border border-gray-100 relative overflow-hidden",
-  sectionTitle: "text-lg md:text-xl font-bold text-gray-800 mb-4 md:mb-5 flex items-center gap-2 md:gap-3",
-  
-  // Filter Section
-  filterContainer: "flex flex-col sm:flex-row gap-2 md:gap-3 w-full sm:w-auto",
-  filterSelect: "appearance-none bg-white border border-gray-300 rounded-lg pl-3 pr-8 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent w-full",
-  exportButton: "flex items-center justify-center gap-1 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 px-3 py-2 rounded-lg transition-all text-sm hover:shadow-md w-full sm:w-auto",
-  
-  // Transaction Items
-  transactionList: "space-y-3 -mx-3 lg:-mx-0 md:-mx-0",
-  viewAllButton: "mt-4 w-full text-center py-3 text-green-600 font-medium hover:bg-green-50 rounded-xl transition-colors flex items-center justify-center gap-2",
-  
-  // Empty State
-  emptyStateContainer: "text-center py-6 md:py-8",
-  emptyStateIcon: "w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-4 rounded-full bg-green-50 flex items-center justify-center",
-  emptyStateText: "text-gray-600 font-medium text-sm md:text-base",
-  emptyStateSubtext: "text-xs md:text-sm text-gray-500 mt-1 md:mt-2",
-  emptyStateButton: "mt-3 md:mt-4 flex items-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-3 py-2 md:px-4 md:py-2.5 rounded-lg md:rounded-xl transition-all shadow-md hover:shadow-lg mx-auto text-sm md:text-base",
-  
-  // Time Frame Selector Container
-  timeFrameContainer: "flex px-10 -mx-14 justify-center lg:-mx-0 md:-mx-0 lg:justify-end md:justify-end mt-4",
+  headerTitle: "text-xl md:text-2xl lg:text-3xl font-bold text-white",
+  headerSubtitle: "text-emerald-100 mt-1 text-sm md:text-base",
+  addButton: "flex items-center gap-2 bg-white text-emerald-700 hover:bg-emerald-50 px-3 py-2 md:px-4 md:py-2.5 rounded-xl transition-all shadow-md hover:shadow-lg font-semibold text-sm md:text-base",
 
-   // Chart header container 
+  summaryGrid: "grid grid-cols-1 -mx-4 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-5",
+
+  chartContainer: "hidden md:block -mx-7 bg-white rounded-2xl p-6 shadow-sm border border-slate-100",
+  chartTitle: "text-lg md:text-xl font-bold text-slate-800 mb-4 md:mb-5 flex items-center gap-2 md:gap-3",
+
+  listContainer: "bg-white rounded-2xl -mx-7 md:rounded-2xl p-4 md:p-6 shadow-sm border border-slate-100 relative overflow-hidden",
+  sectionTitle: "text-lg md:text-xl font-bold text-slate-800 mb-4 md:mb-5 flex items-center gap-2 md:gap-3",
+
+  filterContainer: "flex flex-col sm:flex-row gap-2 md:gap-3 w-full sm:w-auto",
+  filterSelect: "appearance-none bg-white border border-slate-200 rounded-xl pl-3 pr-8 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent w-full",
+  exportButton: "flex items-center justify-center gap-1 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 px-3 py-2 rounded-xl transition-all text-sm hover:shadow-md w-full sm:w-auto",
+
+  transactionList: "space-y-3 -mx-3 lg:-mx-0 md:-mx-0",
+  viewAllButton: "mt-4 w-full text-center py-3 text-emerald-600 font-semibold hover:bg-emerald-50 rounded-xl transition-colors flex items-center justify-center gap-2",
+
+  emptyStateContainer: "text-center py-6 md:py-8",
+  emptyStateIcon: "w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-4 rounded-full bg-emerald-50 flex items-center justify-center",
+  emptyStateText: "text-slate-600 font-medium text-sm md:text-base",
+  emptyStateSubtext: "text-xs md:text-sm text-slate-400 mt-1 md:mt-2",
+  emptyStateButton: "mt-3 md:mt-4 flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white px-3 py-2 md:px-4 md:py-2.5 rounded-xl transition-all shadow-md hover:shadow-lg mx-auto text-sm md:text-base",
+
+  timeFrameContainer: "flex px-10 -mx-14 justify-center lg:-mx-0 md:-mx-0 lg:justify-end md:justify-end mt-4",
   chartHeaderContainer: "flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-5",
-  
-  // Chart height 
   chartHeight: "h-64 md:h-80",
-  
-  // Chart tooltip styles 
+
   tooltipContent: {
-    backgroundColor: "rgba(255, 255, 255, 0.95)",
-    border: "1px solid #e5e7eb",
-    borderRadius: "0.75rem",
-    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+    backgroundColor: "rgba(255, 255, 255, 0.97)",
+    border: "1px solid #e2e8f0",
+    borderRadius: "12px",
+    boxShadow: "0 8px 24px rgba(0, 0, 0, 0.1)",
     padding: "12px",
     backdropFilter: "blur(4px)",
   },
-  
-  // Icon container styles for summary cards 
-  iconGreen: "p-2 bg-green-100 rounded-lg",
-  iconBlue: "p-2 bg-blue-100 rounded-lg",
-  iconPurple: "p-2 bg-purple-100 rounded-lg",
-  
-  // Icon text colors 
-  textGreen: "text-green-600",
+
+  iconGreen: "p-2.5 bg-emerald-100 rounded-xl",
+  iconBlue: "p-2.5 bg-blue-100 rounded-xl",
+  iconPurple: "p-2.5 bg-violet-100 rounded-xl",
+
+  textGreen: "text-emerald-600",
   textBlue: "text-blue-600",
-  textPurple: "text-purple-600",
-  
-  // Filter icon positioning 
-  filterIcon: "absolute right-2 top-1/2 -translate-y-1/2 w-3 h-3 md:w-4 md:h-4 text-gray-500 pointer-events-none",
-  
-  // FinancialCard border colors (if needed, similar to expense page)
-  borderGreen: "border-l-4 border-green-500",
+  textPurple: "text-violet-600",
+
+  filterIcon: "absolute right-2 top-1/2 -translate-y-1/2 w-3 h-3 md:w-4 md:h-4 text-slate-500 pointer-events-none",
+
+  borderGreen: "border-l-4 border-emerald-500",
   borderBlue: "border-l-4 border-blue-500",
-  borderPurple: "border-l-4 border-purple-500",
+  borderPurple: "border-l-4 border-violet-500",
 };
 
 export const expensePageStyles = {
-  // Main container
   container: "space-y-6 max-w-7xl",
-  
-  // Header card
-  headerCard: "bg-white rounded-xl p-4  lg:-mx-0 -mx-3.5  overflow-x-hidden mb-8 shadow",
+
+  headerCard: "bg-gradient-to-br from-rose-500 via-pink-500 to-orange-500 rounded-2xl -mx-3.5 lg:-mx-0 overflow-x-hidden mb-8 shadow-xl p-4",
   headerContainer: "flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 md:gap-4 mb-4 md:mb-6",
-  headerTitle: "text-2xl md:text-3xl font-bold text-gray-800",
-  headerSubtitle: "text-gray-600 mt-1",
-  addButton: "flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white px-4 py-3 rounded-xl transition-all shadow-md hover:shadow-lg font-medium",
-  
-  // Financial cards grid
+  headerTitle: "text-2xl md:text-3xl font-bold text-white",
+  headerSubtitle: "text-rose-100 mt-1",
+  addButton: "flex items-center gap-2 bg-white text-rose-600 hover:bg-rose-50 px-4 py-2.5 rounded-xl transition-all shadow-md hover:shadow-lg font-semibold",
+
   cardsGrid: "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-5",
-  
-  // Chart container
-  chartContainer: "hidden md:block bg-white rounded-xl p-4 -mx-7 lg:-mx-0 shadow-sm border border-gray-100",
+
+  chartContainer: "hidden md:block bg-white rounded-2xl p-4 -mx-7 lg:-mx-0 shadow-sm border border-slate-100",
   chartHeader: "flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-5",
-  chartTitle: "text-xl font-bold text-gray-800 mb-5 flex items-center gap-3",
-  exportButton: "flex items-center gap-1 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 px-4 py-2 rounded-lg transition-all text-sm hover:shadow-md",
+  chartTitle: "text-xl font-bold text-slate-800 mb-5 flex items-center gap-3",
+  exportButton: "flex items-center gap-1 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 px-4 py-2 rounded-xl transition-all text-sm hover:shadow-md",
   chart: "h-80",
-  
-  // Transactions container
-  transactionsContainer: "bg-white rounded-2xl p-5 -mx-4 lg:-mx-0 md:-mx-5 shadow-sm border border-gray-100 relative overflow-hidden",
+
+  transactionsContainer: "bg-white rounded-2xl p-5 -mx-4 lg:-mx-0 md:-mx-5 shadow-sm border border-slate-100 relative overflow-hidden",
   transactionsHeader: "flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 md:gap-4 mb-4 md:mb-5",
-  transactionsTitle: "text-lg md:text-xl font-bold text-gray-800 mb-4 md:mb-5 flex items-center gap-2 md:gap-3",
-  filterSelect: "appearance-none bg-white border border-gray-300 rounded-lg pl-3 pr-8 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent w-full",
-  
-  // Transaction items
+  transactionsTitle: "text-lg md:text-xl font-bold text-slate-800 mb-4 md:mb-5 flex items-center gap-2 md:gap-3",
+  filterSelect: "appearance-none bg-white border border-slate-200 rounded-xl pl-3 pr-8 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-400 focus:border-transparent w-full",
+
   transactionsList: "space-y-3 -mx-2 lg:-mx-0 md:-mx-0",
-  viewAllButton: "mt-4 w-full text-center py-3 text-orange-600 font-medium hover:bg-amber-50 rounded-xl transition-colors flex items-center justify-center gap-2",
+  viewAllButton: "mt-4 w-full text-center py-3 text-rose-600 font-semibold hover:bg-rose-50 rounded-xl transition-colors flex items-center justify-center gap-2",
   emptyState: "text-center py-8",
-  emptyStateIcon: "w-16 h-16 mx-auto mb-4 rounded-full bg-orange-50 flex items-center justify-center",
-  emptyStateText: "text-gray-600 font-medium",
-  emptyStateSubtext: "text-sm text-gray-500 mt-2",
-  
-  // Icons
-  iconOrange: "p-2 bg-orange-100 rounded-lg",
-  iconAmber: "p-2 bg-amber-100 rounded-lg",
-  iconYellow: "p-2 bg-yellow-100 rounded-lg",
+  emptyStateIcon: "w-16 h-16 mx-auto mb-4 rounded-full bg-rose-50 flex items-center justify-center",
+  emptyStateText: "text-slate-600 font-medium",
+  emptyStateSubtext: "text-sm text-slate-400 mt-2",
+
+  iconOrange: "p-2.5 bg-orange-100 rounded-xl",
+  iconAmber: "p-2.5 bg-amber-100 rounded-xl",
+  iconYellow: "p-2.5 bg-yellow-100 rounded-xl",
   textOrange: "text-orange-600",
   textAmber: "text-amber-600",
   textYellow: "text-yellow-600",
-  
-  // Borders
+
   borderOrange: "border-l-4 border-orange-500",
   borderAmber: "border-l-4 border-amber-500",
   borderYellow: "border-l-4 border-yellow-500",
-  // Chart tooltip styles 
+
   tooltipContent: {
-    backgroundColor: "rgba(255, 255, 255, 0.95)",
-    border: "1px solid #e5e7eb",
-    borderRadius: "0.75rem",
-    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+    backgroundColor: "rgba(255, 255, 255, 0.97)",
+    border: "1px solid #e2e8f0",
+    borderRadius: "12px",
+    boxShadow: "0 8px 24px rgba(0, 0, 0, 0.1)",
     padding: "12px",
     backdropFilter: "blur(4px)",
   },
-  
-  // Chart height style 
-  chartHeight: "h-80",
-  
-  // Export button for chart header (different from existing exportButton)
-  chartExportButton: "flex items-center gap-1 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 px-4 py-2 rounded-lg transition-all text-sm hover:shadow-md",
-  
-  // Additional empty state style 
-  emptyStateSubtext: "text-sm text-gray-500 mt-2",
-  
-  // Timeframe positioning 
-  timeframePositioning: "flex px-10 -mx-14 justify-center lg:-mx-0 md:-mx-0 lg:justify-end md:justify-end mt-4",
-  
-  // Transaction item specific styles 
-  transactionItemContainer: "flex items-center justify-between p-3 -mx-2 hover:bg-amber-50 rounded-xl transition-all duration-300 border border-gray-100 cursor-pointer mb-3 group",
-  transactionAmount: "font-bold",
-  transactionIcon: "lg:p-3 md:p-3 p-1 rounded-lg",
 
-  
+  chartHeight: "h-80",
+  chartExportButton: "flex items-center gap-1 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 px-4 py-2 rounded-xl transition-all text-sm hover:shadow-md",
+  timeframePositioning: "flex px-10 -mx-14 justify-center lg:-mx-0 md:-mx-0 lg:justify-end md:justify-end mt-4",
+  transactionItemContainer: "flex items-center justify-between p-3 -mx-2 hover:bg-rose-50/60 rounded-xl transition-all duration-200 border border-slate-100 cursor-pointer mb-3 group",
+  transactionAmount: "font-bold",
+  transactionIcon: "lg:p-3 md:p-3 p-1 rounded-xl",
 };
 
 export const profileStyles = {
-  // Container styles
   container: "max-w-4xl mx-auto py-8 px-4",
   mainContainer: "bg-white -mx-7 rounded-2xl shadow-sm overflow-hidden",
-  
-  // Header styles
-  header: "bg-gradient-to-r from-teal-500 to-emerald-600 p-8 text-center",
-  avatar: "w-24 h-24 mx-auto rounded-full bg-white/20 flex items-center justify-center mb-4",
+
+  header: "bg-gradient-to-br from-violet-600 via-indigo-600 to-purple-700 p-8 text-center relative overflow-hidden",
+  avatar: "w-24 h-24 mx-auto rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-4 ring-4 ring-white/30",
   userName: "text-2xl font-bold text-white",
-  userEmail: "text-teal-100 mt-2",
-  
-  // Content styles
+  userEmail: "text-violet-200 mt-2",
+
   content: "p-8 -mx-6.5",
   grid: "grid grid-cols-1 md:grid-cols-2 gap-8",
-  
-  // Card styles
-  card: "bg-gray-50 rounded-xl p-6",
-  cardTitle: "text-xl font-semibold pb-3 text-gray-800 flex items-center",
-  icon: "w-5 h-5 mr-2 text-teal-600",
-  
-  // Form styles
-  label: "text-sm text-gray-500  block mb-1",
-  input: "w-full px-4 py-2 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-300 focus:border-teal-500",
-  inputWithError: "w-full px-4 py-2 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-teal-300 focus:border-teal-500",
-  
-  // Button styles
-  buttonPrimary: "flex-1 bg-gradient-to-r from-teal-500 to-emerald-600 text-white py-2.5 rounded-xl font-medium shadow-md",
-  buttonSecondary: "flex-1 py-2.5 border border-gray-300 text-gray-700 rounded-xl font-medium hover:bg-gray-100",
-  editButton: "text-teal-600 hover:text-teal-700 font-medium text-sm",
-  changeButton: "text-teal-600 hover:text-teal-700 font-medium lg:text-sm",
-  
-  // Security item
-  securityItem: "flex items-center justify-between p-4 bg-white rounded-xl border border-gray-200",
-  securityText: "font-medium lg:text-sm text-gray-400",
-  
-  // Modal styles
+
+  card: "bg-slate-50 rounded-2xl p-6 border border-slate-100",
+  cardTitle: "text-xl font-semibold pb-3 text-slate-800 flex items-center",
+  icon: "w-5 h-5 mr-2 text-violet-600",
+
+  label: "text-sm text-slate-500 block mb-1 font-medium",
+  input: "w-full px-4 py-2.5 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-violet-300 focus:border-violet-500 outline-none transition-all",
+  inputWithError: "w-full px-4 py-2.5 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-violet-300 focus:border-violet-500 outline-none transition-all",
+
+  buttonPrimary: "flex-1 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white py-2.5 rounded-xl font-semibold shadow-md transition-all",
+  buttonSecondary: "flex-1 py-2.5 border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-100 transition-all",
+  editButton: "text-violet-600 hover:text-violet-700 font-semibold text-sm",
+
+  changeButton: "text-violet-600 hover:text-violet-700 font-semibold lg:text-sm",
+
+  securityItem: "flex items-center justify-between p-4 bg-white rounded-xl border border-slate-200",
+  securityText: "font-medium lg:text-sm text-slate-400",
+
   modalContent: "bg-white rounded-2xl p-6 lg:px-28 w-full max-w-md",
   modalHeader: "flex justify-between lg:whitespace-nowrap lg:space-x-20 mb-6",
-  modalTitle: "text-xl font-bold lg:pl-10 text-gray-800",
-  
-  // Password input
-  passwordLabel: "block text-sm font-medium text-gray-700 mb-1",
+  modalTitle: "text-xl font-bold lg:pl-10 text-slate-800",
+
+  passwordLabel: "block text-sm font-medium text-slate-700 mb-1",
   passwordContainer: "relative",
-  passwordToggle: "absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600",
-  
-  // Error text
-  errorText: "mt-1 text-sm text-red-600"
+  passwordToggle: "absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600",
+
+  errorText: "mt-1 text-sm text-red-600",
 };
 
-// Add to existing dummyStyles.js
 export const modalStyles = {
-  // Modal container
-  overlay: "fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50",
-  modalContainer: "bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl",
-  
-  // Header
-  modalHeader: "flex justify-between items-center mb-4",
-  modalTitle: "text-xl font-bold text-gray-800",
-  closeButton: "text-gray-500 hover:text-gray-800",
-  
-  // Form elements
+  overlay: "fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50",
+  modalContainer: "bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl border border-slate-100",
+
+  modalHeader: "flex justify-between items-center mb-5",
+  modalTitle: "text-xl font-bold text-slate-800",
+  closeButton: "text-slate-400 hover:text-slate-700 p-1 rounded-lg hover:bg-slate-100 transition-all",
+
   form: "space-y-4",
-  label: "block text-sm font-medium text-gray-700 mb-1",
-  input: (ringColor) => `w-full border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 ${ringColor}`,
-  
-  // Type buttons
-  typeButtonContainer: "flex gap-4",
-  typeButton: (isSelected, color) => 
-    `flex-1 py-2 rounded-lg font-medium ${
-      isSelected 
-        ? `${color} text-white shadow-md` 
-        : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+  label: "block text-sm font-semibold text-slate-700 mb-1",
+  input: (ringColor) => `w-full border border-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 ${ringColor} transition-all bg-slate-50 focus:bg-white`,
+
+  typeButtonContainer: "flex gap-3",
+  typeButton: (isSelected, color) =>
+    `flex-1 py-2.5 rounded-xl font-semibold transition-all text-sm ${
+      isSelected
+        ? `${color} text-white shadow-md`
+        : "bg-slate-100 text-slate-600 hover:bg-slate-200"
     }`,
-  
-  // Submit button
-  submitButton: (color) => `w-full text-white py-3 rounded-lg font-medium mt-4 shadow-md hover:shadow-lg transition-all ${color}`,
-  
-  // Color classes
+
+  submitButton: (color) => `w-full text-white py-3 rounded-xl font-semibold mt-2 shadow-md hover:shadow-lg transition-all ${color}`,
+
   colorClasses: {
     teal: {
-      button: "bg-teal-500 hover:bg-teal-600",
-      ring: "focus:ring-teal-500",
-      typeButtonSelected: "bg-teal-500",
+      button: "bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700",
+      ring: "focus:ring-violet-400",
+      typeButtonSelected: "bg-violet-600",
     },
     orange: {
-      button: "bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600",
-      ring: "focus:ring-orange-500",
-      typeButtonSelected: "bg-orange-500",
+      button: "bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600",
+      ring: "focus:ring-rose-400",
+      typeButtonSelected: "bg-rose-500",
     },
   },
 };
 
-
-
-// In src/assets/dummyStyles.js - add these styles
 export const loginStyles = {
-  // Page container
-  pageContainer: "min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-teal-50 to-emerald-50",
-  
-  // Card container
-  cardContainer: "w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden",
-  
-  // Header styles
-  header: "bg-gradient-to-r from-teal-500 to-emerald-600 p-6 text-center",
-  avatar: "w-20 h-20 mx-auto rounded-full bg-white/20 flex items-center justify-center mb-4",
+  pageContainer: "min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-slate-900 via-violet-950 to-indigo-950 relative overflow-hidden",
+
+  cardContainer: "w-full max-w-md bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white/20 relative z-10",
+
+  header: "bg-gradient-to-br from-violet-600 via-indigo-600 to-purple-700 p-8 text-center relative overflow-hidden",
+  avatar: "w-20 h-20 mx-auto rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-4 ring-4 ring-white/30",
   headerTitle: "text-2xl font-bold text-white",
-  headerSubtitle: "text-teal-100 mt-2",
-  
-  // Form container
+  headerSubtitle: "text-violet-200 mt-2 text-sm",
+
   formContainer: "p-8",
-  
-  // Error message
-  errorContainer: "mb-6 p-3 bg-red-50 text-red-700 rounded-lg flex items-center",
-  errorIcon: "w-6 h-6 rounded-full bg-red-100 flex items-center justify-center mr-3",
-  errorText: "break-words",
-  
-  // Form elements
-  label: "block text-sm font-medium text-gray-700 mb-2",
+
+  errorContainer: "mb-6 p-3.5 bg-red-50 text-red-700 rounded-xl flex items-center gap-3 border border-red-100",
+  errorIcon: "w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0",
+  errorText: "break-words text-sm",
+
+  label: "block text-sm font-semibold text-slate-700 mb-2",
   inputContainer: "relative",
-  inputIcon: "absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400",
-  input: "w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-teal-300 focus:border-teal-500",
-  passwordInput: "w-full pl-10 pr-10 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-teal-300 focus:border-teal-500",
-  passwordToggle: "absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600",
-  
-  // Checkbox
+  inputIcon: "absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400",
+  input: "w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-violet-400 focus:border-violet-500 outline-none transition-all focus:bg-white",
+  passwordInput: "w-full pl-10 pr-10 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-violet-400 focus:border-violet-500 outline-none transition-all focus:bg-white",
+  passwordToggle: "absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600",
+
   checkboxContainer: "mb-6 flex items-center",
-  checkbox: "w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500",
-  checkboxLabel: "ml-2 block text-sm text-gray-700",
-  
-  // Button
-  button: "w-full bg-gradient-to-r from-teal-500 to-emerald-600 text-white py-3 rounded-xl font-medium shadow-md hover:shadow-lg transition-all flex items-center justify-center",
-  buttonDisabled: "opacity-80 cursor-not-allowed",
-  
-  // Sign up link
+  checkbox: "w-4 h-4 text-violet-600 border-slate-300 rounded focus:ring-violet-500 accent-violet-600",
+  checkboxLabel: "ml-2 block text-sm text-slate-600 font-medium",
+
+  button: "w-full bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all flex items-center justify-center",
+  buttonDisabled: "opacity-75 cursor-not-allowed",
+
   signUpContainer: "mt-8 text-center",
-  signUpText: "text-gray-600",
-  signUpLink: "font-medium text-teal-600 hover:underline",
-  
-  // Spinner for loading state
-  spinner: "animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+  signUpText: "text-slate-500 text-sm",
+  signUpLink: "font-semibold text-violet-600 hover:text-violet-700 hover:underline",
+
+  spinner: "animate-spin -ml-1 mr-3 h-5 w-5 text-white",
 };
 
-// Styles for Navbar component
 export const navbarStyles = {
-  // Layout and container styles
-  header: "sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm",
+  header: "sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm",
   container: "flex items-center justify-between px-4 py-3 md:px-8 max-w-7xl mx-auto",
-  
-  // Logo styles
-  logoContainer: "flex items-center gap-0 cursor-pointer",
-  logoImage: "w-15 h-15 rounded-xl overflow-hidden",
-  
-  // Text styles
-  logoText: "lg:text-3xl md:text-3xl text-2xl text-gray-900 font-[550] lobster-regular",
-  
-  // User profile styles
+
+  logoContainer: "flex items-center gap-2 cursor-pointer",
+  logoImage: "w-10 h-10 rounded-xl overflow-hidden",
+
+  logoText: "text-xl md:text-2xl font-bold bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent",
+
   userContainer: "relative",
-  userButton: "flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors",
-  userAvatar: "w-9 h-9 flex items-center justify-center rounded-full bg-gradient-to-br from-teal-600 to-cyan-500 text-white font-bold text-lg",
-  statusIndicator: "absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white",
+  userButton: "flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-slate-50 transition-all",
+  userAvatar: "w-9 h-9 flex items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 text-white font-bold text-sm",
+  statusIndicator: "absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-500 rounded-full border-2 border-white",
   userTextContainer: "text-left hidden md:block",
-  userName: "text-sm font-medium text-gray-800 truncate max-w-[120px]",
-  userEmail: "text-xs text-gray-500 truncate max-w-[120px]",
-  chevronIcon: (isOpen) => `w-4 h-4 text-gray-500 transition-transform ${isOpen ? "rotate-180" : ""}`,
-  
-  // Dropdown menu styles
-  dropdownMenu: "absolute top-14 right-0 w-56 bg-white rounded-xl shadow-lg border border-gray-100 z-50",
-  dropdownHeader: "px-4 py-3 border-b border-gray-100",
-  dropdownAvatar: "w-10 h-10 rounded-full bg-gradient-to-br from-teal-600 to-cyan-500 flex items-center justify-center text-white font-bold text-lg",
-  dropdownName: "text-sm text-gray-800 ",
-  dropdownEmail: "text-xs text-gray-500",
-  
-  // Menu items
+  userName: "text-sm font-semibold text-slate-800 truncate max-w-[120px]",
+  userEmail: "text-xs text-slate-400 truncate max-w-[120px]",
+  chevronIcon: (isOpen) => `w-4 h-4 text-slate-400 transition-transform ${isOpen ? "rotate-180" : ""}`,
+
+  dropdownMenu: "absolute top-14 right-0 w-56 bg-white rounded-2xl shadow-xl border border-slate-100 z-50 overflow-hidden",
+  dropdownHeader: "px-4 py-3.5 border-b border-slate-100 bg-slate-50/60",
+  dropdownAvatar: "w-10 h-10 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center text-white font-bold text-sm",
+  dropdownName: "text-sm font-semibold text-slate-800",
+  dropdownEmail: "text-xs text-slate-400",
+
   menuItemContainer: "p-1.5",
-  menuItem: "w-full px-4 py-3 text-left hover:bg-gray-50 text-sm text-gray-700 flex items-center gap-3 rounded-lg",
-  menuItemBorder: "p-1.5 border-t border-gray-100",
-  logoutButton: "flex w-full items-center gap-3 px-4 py-3 text-sm hover:bg-red-50 text-red-600 rounded-lg"
+  menuItem: "w-full px-4 py-2.5 text-left hover:bg-slate-50 text-sm text-slate-700 flex items-center gap-3 rounded-xl font-medium",
+  menuItemBorder: "p-1.5 border-t border-slate-100",
+  logoutButton: "flex w-full items-center gap-3 px-4 py-2.5 text-sm hover:bg-red-50 text-red-600 rounded-xl font-medium",
 };
 
-
-// In src/assets/dummyStyles.js - add these styles
 export const signupStyles = {
-  // Page container (reusing from login)
-  pageContainer: "min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-teal-50 to-emerald-50",
-  
-  // Card container (reusing from login)
-  cardContainer: "w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden",
-  
-  // Header styles (reusing from login with additions)
-  header: "bg-gradient-to-r from-teal-500 to-emerald-600 p-6 text-center relative",
-  avatar: "w-20 h-20 mx-auto rounded-full bg-white/20 flex items-center justify-center mb-4",
+  pageContainer: "min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-slate-900 via-violet-950 to-indigo-950 relative overflow-hidden",
+
+  cardContainer: "w-full max-w-md bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white/20 relative z-10",
+
+  header: "bg-gradient-to-br from-violet-600 via-indigo-600 to-purple-700 p-8 text-center relative overflow-hidden",
+  avatar: "w-20 h-20 mx-auto rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-4 ring-4 ring-white/30",
   headerTitle: "text-2xl font-bold text-white",
-  headerSubtitle: "text-teal-100 mt-2",
-  backButton: "absolute top-4 left-4 p-2 text-white rounded-full hover:bg-white/10 transition-colors",
-  
-  // Form container (reusing from login)
+  headerSubtitle: "text-violet-200 mt-2 text-sm",
+  backButton: "absolute top-4 left-4 p-2 text-white rounded-xl hover:bg-white/20 transition-all",
+
   formContainer: "p-8",
-  
-  // Error messages
-  apiError: "mb-4 text-center text-sm text-red-600",
-  fieldError: "mt-1 text-sm text-red-600",
-  
-  // Form elements (reusing from login with additions)
-  label: "block text-sm font-medium text-gray-700 mb-2",
+
+  apiError: "mb-4 text-center text-sm text-red-600 bg-red-50 py-2 px-3 rounded-xl border border-red-100",
+  fieldError: "mt-1 text-xs text-red-600",
+
+  label: "block text-sm font-semibold text-slate-700 mb-2",
   inputContainer: "relative",
-  inputIcon: "absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400",
-  input: "w-full pl-10 pr-4 py-3 bg-gray-50 border rounded-xl focus:ring-2 focus:ring-teal-300 focus:border-teal-500",
-  passwordInput: "w-full pl-10 pr-10 py-3 bg-gray-50 border rounded-xl focus:ring-2 focus:ring-teal-300 focus:border-teal-500",
-  passwordToggle: "absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600",
-  
-  // Checkbox (reusing from login)
+  inputIcon: "absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400",
+  input: "w-full pl-10 pr-4 py-3 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-violet-400 focus:border-violet-500 outline-none transition-all focus:bg-white",
+  passwordInput: "w-full pl-10 pr-10 py-3 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-violet-400 focus:border-violet-500 outline-none transition-all focus:bg-white",
+  passwordToggle: "absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600",
+
   checkboxContainer: "mb-6 flex items-center",
-  checkbox: "w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500",
-  checkboxLabel: "ml-2 block text-sm text-gray-700",
-  
-  // Button (reusing from login)
-  button: "w-full bg-gradient-to-r from-teal-500 to-emerald-600 text-white py-3 rounded-xl font-medium shadow-md hover:shadow-lg transition-all flex items-center justify-center",
-  buttonDisabled: "opacity-80 cursor-not-allowed",
-  
-  // Sign in link (reusing from login with modifications)
+  checkbox: "w-4 h-4 text-violet-600 border-slate-300 rounded focus:ring-violet-500 accent-violet-600",
+  checkboxLabel: "ml-2 block text-sm text-slate-600 font-medium",
+
+  button: "w-full bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all flex items-center justify-center",
+  buttonDisabled: "opacity-75 cursor-not-allowed",
+
   signInContainer: "mt-8 text-center",
-  signInText: "text-gray-600",
-  signInLink: "font-medium text-teal-600 hover:underline",
-  
-  // Spinner for loading state (reusing from login)
-  spinner: "animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+  signInText: "text-slate-500 text-sm",
+  signInLink: "font-semibold text-violet-600 hover:text-violet-700 hover:underline",
+
+  spinner: "animate-spin -ml-1 mr-3 h-5 w-5 text-white",
 };
 
 export const transactionItemStyles = {
-  // Container styles
-  container: (isEditing, classes) => 
-    `flex flex-col md:flex-row items-stretch justify-between gap-3 p-4 rounded-xl border border-gray-100 mb-3 last:mb-0 ${isEditing ? classes.bg : "hover:bg-gray-50"}`,
-  
-  // Layout styles
+  container: (isEditing, classes) =>
+    `flex flex-col md:flex-row items-stretch justify-between gap-3 p-3.5 rounded-xl border border-slate-100 mb-3 last:mb-0 transition-all ${isEditing ? classes.bg : "hover:bg-slate-50 hover:border-slate-200"}`,
+
   mainContainer: "flex items-center gap-3 flex-1 min-w-0",
   actionsContainer: "flex items-center justify-between gap-3 mt-2 md:mt-0",
   amountContainer: "min-w-[100px] flex-shrink-0 flex justify-end",
   buttonsContainer: "flex gap-1 flex-shrink-0",
-  
-  // Icon styles
+
   iconContainer: (iconClass, classes) => `${iconClass} ${classes.iconBg}`,
-  
-  // Content styles
+
   contentContainer: "min-w-0 flex-1",
-  description: "font-medium text-gray-800 truncate",
-  details: "text-xs text-gray-500 mt-1 truncate",
-  
-  // Input styles
-  input: (hasError, classes) => 
-    `w-full bg-white rounded-lg px-3 py-2 focus:outline-none focus:ring-1 ${hasError ? "border-red-500 ring-red-500" : `${classes.border} ${classes.ring}`}`,
-  amountInput: (hasError, classes) => 
-    `w-full max-w-[120px] bg-white rounded-lg px-3 py-2 focus:outline-none focus:ring-1 ${hasError ? "border-red-500 ring-red-500" : `${classes.border} ${classes.ring}`}`,
-  
-  // Error styles
-  errorText: "text-xs text-red-600 mt-1",
-  
-  // Amount display
+  description: "font-semibold text-slate-800 truncate text-sm",
+  details: "text-xs text-slate-400 mt-0.5 truncate",
+
+  input: (hasError, classes) =>
+    `w-full bg-white rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 border ${hasError ? "border-red-400 ring-red-400" : `${classes.border} ${classes.ring}`}`,
+  amountInput: (hasError, classes) =>
+    `w-full max-w-[120px] bg-white rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 border ${hasError ? "border-red-400 ring-red-400" : `${classes.border} ${classes.ring}`}`,
+
+  errorText: "text-xs text-red-500 mt-1",
+
   amountText: (amountClass, classes) => `${amountClass} ${classes.text}`,
-  
-  // Button styles
-  saveButton: (classes) => `p-2 ${classes.button} rounded-lg`,
-  cancelButton: "p-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400",
-  editButton: (classes) => `p-2 ${classes.text} rounded-lg hover:${classes.bg}`,
-  deleteButton: (classes) => `p-2 ${classes.text} rounded-lg hover:${classes.bg}`
+
+  saveButton: (classes) => `p-2 ${classes.button} rounded-xl`,
+  cancelButton: "p-2 bg-slate-200 text-slate-600 rounded-xl hover:bg-slate-300",
+  editButton: (classes) => `p-2 ${classes.text} rounded-xl hover:${classes.bg}`,
+  deleteButton: (classes) => `p-2 ${classes.text} rounded-xl hover:${classes.bg}`,
 };
 
-// Centralized styles for the application
 export const sidebarStyles = {
-  // Layout and container styles
   sidebarContainer: {
     base: "hidden lg:flex flex-col pt-3 fixed top-16 bottom-0 z-30"
   },
-  
+
   sidebarInner: {
-    base: "bg-white border-r  border-gray-200 shadow-md h-full flex flex-col"
+    base: "bg-gradient-to-b from-slate-900 via-violet-950 to-indigo-950 h-full flex flex-col border-r border-white/10"
   },
-  
-  // User profile section
+
   userProfileContainer: {
-    base: "p-4 border-b pt-20 md:pt-5 lg:pt-5 xl:pt-5 border-gray-100",
+    base: "p-4 border-b pt-20 md:pt-5 lg:pt-5 xl:pt-5 border-white/10",
     collapsed: "px-3",
-    expanded: "px-6"
+    expanded: "px-5"
   },
-  
+
   userInitials: {
-    base: "w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center text-white font-bold text-xl"
+    base: "w-10 h-10 rounded-xl bg-gradient-to-br from-violet-400 to-indigo-500 flex items-center justify-center text-white font-bold text-base shadow-lg"
   },
-  
-  // Menu items
+
   menuList: {
-    base: "space-y-1 px-2"
+    base: "space-y-1 px-3"
   },
-  
+
   menuItem: {
-    base: "relative flex items-center gap-3 py-3 rounded-xl font-medium transition-all duration-200",
-    active: "text-teal-600 bg-teal-50",
-    inactive: "text-gray-600 hover:text-teal-700 hover:bg-gray-50",
-    collapsed: "justify-center px-0 mx-2",
-    expanded: "px-4"
+    base: "relative flex items-center gap-3 py-2.5 rounded-xl font-medium transition-all duration-200",
+    active: "text-white bg-white/15 shadow-sm",
+    inactive: "text-white/60 hover:text-white hover:bg-white/10",
+    collapsed: "justify-center px-0 mx-1",
+    expanded: "px-3"
   },
-  
+
   menuIcon: {
-    active: "text-teal-600",
-    inactive: "text-gray-500"
+    active: "text-white",
+    inactive: "text-white/50"
   },
-  
-  activeIndicator: "absolute right-4 w-2 h-2 bg-teal-400 rounded-full animate-ping",
-  
-  // Toggle button
+
+  activeIndicator: "absolute right-3 w-1.5 h-1.5 bg-violet-400 rounded-full animate-pulse-dot",
+
   toggleButton: {
-    base: "absolute -right-3 top-12 z-20 w-6 h-6 bg-white border border-gray-300 rounded-full flex items-center justify-center text-gray-500 hover:text-teal-600 hover:border-teal-400 hover:bg-teal-50 transition-all"
+    base: "absolute -right-3 top-12 z-20 w-6 h-6 bg-white border border-slate-200 rounded-full flex items-center justify-center text-slate-500 hover:text-violet-600 hover:border-violet-300 hover:bg-violet-50 transition-all shadow-sm"
   },
-  
-  // Footer section
+
   footerContainer: {
-    base: "border-t border-gray-100 p-4",
+    base: "border-t border-white/10 p-4 mt-auto",
     collapsed: "px-3",
-    expanded: "px-6"
+    expanded: "px-5"
   },
-  
+
   footerLink: {
-    base: "flex items-center gap-3 py-2 rounded-xl font-medium text-gray-600 hover:text-teal-700 hover:bg-gray-50",
+    base: "flex items-center gap-3 py-2.5 rounded-xl font-medium text-white/60 hover:text-white hover:bg-white/10 transition-all",
     collapsed: "justify-center"
   },
-  
+
   logoutButton: {
-    base: "flex items-center gap-3 py-2 rounded-xl font-medium text-gray-600 hover:text-red-600 hover:bg-red-50 w-full mt-1",
+    base: "flex items-center gap-3 py-2.5 rounded-xl font-medium text-white/60 hover:text-red-400 hover:bg-red-500/10 w-full mt-1 transition-all",
     collapsed: "justify-center"
   },
-  
-  // Mobile sidebar
+
   mobileOverlay: "fixed inset-0 z-40 lg:hidden",
-  mobileBackdrop: "absolute inset-0 bg-black/30 backdrop-blur-sm",
-  
+  mobileBackdrop: "absolute inset-0 bg-black/50 backdrop-blur-sm",
+
   mobileSidebar: {
-    base: "absolute left-0 top-0 bottom-0 w-4/5 max-w-sm bg-white shadow-2xl rounded-r-2xl overflow-hidden"
+    base: "absolute left-0 top-0 bottom-0 w-4/5 max-w-sm bg-gradient-to-b from-slate-900 via-violet-950 to-indigo-950 shadow-2xl rounded-r-2xl overflow-hidden border-r border-white/10"
   },
-  
-  mobileHeader: "p-6 flex justify-between items-center border-b border-gray-100",
+
+  mobileHeader: "p-6 flex justify-between items-center border-b border-white/10",
   mobileUserContainer: "flex pt-28 items-center gap-3",
-  mobileCloseButton: "p-2 rounded-lg hover:bg-gray-100",
-  
-  mobileMenuList: "space-y-1",
+  mobileCloseButton: "p-2 rounded-xl hover:bg-white/10 text-white/70 hover:text-white",
+
+  mobileMenuList: "space-y-1 px-3",
   mobileMenuItem: {
-    base: "flex items-center gap-4 px-6 py-4 font-medium",
-    active: "text-teal-600 bg-teal-50",
-    inactive: "text-gray-600 hover:bg-gray-50"
+    base: "flex items-center gap-4 px-4 py-3.5 rounded-xl font-medium",
+    active: "text-white bg-white/15",
+    inactive: "text-white/60 hover:bg-white/10 hover:text-white"
   },
-  
-  mobileFooter: "border-t border-gray-100 p-6",
-  mobileFooterLink: "flex items-center gap-4 py-2 font-medium text-gray-600 hover:text-teal-700",
-  mobileLogoutButton: "flex items-center gap-4 py-2 font-medium text-gray-600 hover:text-red-600 w-full",
-  
-  // Mobile menu button
-  mobileMenuButton: "lg:hidden fixed bottom-6 right-6 z-50 w-14 h-14 bg-gradient-to-br from-cyan-500 to-teal-600 text-white rounded-full flex items-center justify-center shadow-xl"
+
+  mobileFooter: "border-t border-white/10 p-5 mt-auto",
+  mobileFooterLink: "flex items-center gap-4 py-2.5 font-medium text-white/60 hover:text-white",
+  mobileLogoutButton: "flex items-center gap-4 py-2.5 font-medium text-white/60 hover:text-red-400 w-full",
+
+  mobileMenuButton: "lg:hidden fixed bottom-6 right-6 z-50 w-14 h-14 bg-gradient-to-br from-violet-600 to-indigo-600 text-white rounded-full flex items-center justify-center shadow-xl"
 };
 
-// Helper function to combine class names
 export const cn = (...classes) => classes.filter(Boolean).join(" ");
 
-// assets/dummyStyles.js
-
 export const styles = {
-  // Layout and Container Styles
   layout: {
-    root: "min-h-screen bg-gradient-to-br from-gray-50 to-gray-100",
-    mainContainer: (sidebarCollapsed) => 
-      `p-4 pt-6 transition-all duration-300 ${sidebarCollapsed ? 'lg:ml-20' : 'lg:ml-64'}`,
+    root: "min-h-screen bg-slate-50",
+    mainContainer: (sidebarCollapsed) =>
+      `p-4 pt-6 transition-all duration-300 ${sidebarCollapsed ? "lg:ml-20" : "lg:ml-64"}`,
   },
 
-  // Header Styles
   header: {
     container: "flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4",
-    title: "text-2xl font-bold text-gray-800",
-    subtitle: "text-gray-600",
+    title: "text-2xl font-bold text-slate-800",
+    subtitle: "text-slate-500",
   },
 
-  // Stat Card Styles
   statCards: {
-    grid: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mb-6",
-    card: "bg-white p-5 rounded-2xl shadow-sm border border-gray-100",
-    cardHeader: "flex justify-between items-start",
-    cardTitle: "text-sm text-gray-600",
-    cardValue: "text-2xl font-bold text-gray-800 mt-1",
-    iconContainer: (color) => `bg-${color}-100 p-2 rounded-lg`,
-    icon: (color) => `w-5 h-5 text-${color}-600`,
-    cardFooter: "text-xs text-gray-500 mt-3",
-  },
-
-  // Grid Layout
-  grid: {
-    main: "grid grid-cols-1 lg:grid-cols-3 gap-6",
-    leftColumn: "lg:col-span-2 space-y-6",
-    rightColumn: "lg:col-span-1 lg:-mx-3 space-y-6",
-  },
-
-  // Card Styles
-  cards: {
-    base: "bg-white rounded-2xl p-6 shadow-sm border border-gray-100",
-    header: "flex justify-between items-center mb-6",
-    title: "text-xl font-bold text-gray-800 flex items-center gap-3",
-    titleIcon: "w-6 h-6",
-  },
-
-  // Recent Transactions Card
-  transactions: {
-    cardHeader: "flex justify-between items-center mb-4",
-    cardTitle: "text-md md:text-xl lg:text-xl xl:text-xl font-bold text-gray-800 flex items-center gap-3",
-    refreshButton: "p-2 rounded-lg hover:bg-gray-100 transition-colors",
-    refreshIcon: (loading) => `w-5 h-5 text-gray-500 ${loading ? 'animate-spin' : ''}`,
-    dataStackingInfo: "flex items-center gap-2 text-xs text-gray-500 mb-4 bg-blue-50 p-2 rounded-lg",
-    dataStackingIcon: "w-4 h-4 text-blue-500",
-    listContainer: "space-y-4 max-h-[500px] -mx-5 overflow-y-auto pr-2",
-    transactionItem: "flex items-center lg:flex-col xl:flex-row md:flex-row justify-between p-1 -mx-0 lg:p-4 md:p-4 hover:bg-gray-50 rounded-xl transition-all duration-300 border border-gray-100",
-    iconWrapper: (type) => type === 'income' ? 'bg-teal-100 text-teal-600' : 'bg-orange-100 text-orange-600',
-    icon: "w-4 h-4",
-    details: "min-w-0",
-    description: "font-medium text-gray-800 truncate max-w-[120px]",
-    meta: "text-xs text-gray-500 mt-1",
-    amount: (type) => `font-semibold ${type === 'income' ? 'text-teal-600' : 'text-orange-600'}`,
-    emptyState: "text-center py-8",
-    emptyIconContainer: "w-16 h-16 mx-auto mb-4 rounded-full bg-purple-100 flex items-center justify-center",
-    emptyIcon: "w-8 h-8 text-purple-500",
-    emptyText: "text-gray-600 font-medium",
-    viewAllContainer: "pt-4 border-t border-gray-100",
-    viewAllButton: "w-full flex items-center justify-center gap-2 py-3 text-teal-600 font-medium hover:bg-teal-50 rounded-xl transition-colors",
-  },
-
-  // Spending by Category Card
-  categories: {
-    title: "text-lg md:text-xl lg:text-xl xl:text-xl font-bold text-gray-800 mb-6 flex items-center gap-3",
-    titleIcon: "w-6 h-6 text-cyan-500",
-    list: "space-y-4",
-    categoryItem: "flex items-center md:text-lg lg:text-sm xl:text-lg justify-between",
-    categoryIconContainer: "bg-gray-100 p-2 rounded-lg",
-    categoryIcon: "w-4 h-4 text-gray-600",
-    categoryName: "font-medium text-gray-700",
-    categoryAmount: "font-semibold text-gray-800",
-    summaryContainer: "mt-6 pt-6 border-t border-gray-100",
-    summaryGrid: "grid grid-cols-2 gap-4",
-    summaryIncomeCard: "bg-gradient-to-br from-teal-50 to-cyan-50 rounded-xl p-4",
-    summaryExpenseCard: "bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl p-4",
-    summaryTitle: "text-sm text-gray-600",
-    summaryValue: "text-sm font-bold text-gray-800",
-  },
-
-  // Color Helpers
-  colors: {
-    transaction: {
-      text: (type) => type === 'income' ? 'text-teal-600' : 'text-orange-600',
-      bg: (type) => type === 'income' ? 'bg-teal-100 text-teal-600' : 'bg-orange-100 text-orange-600',
+    grid: "grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-6",
+    card: "bg-white rounded-2xl p-5 shadow-sm border border-slate-100 hover:shadow-md transition-all",
+    cardHeader: "flex items-start justify-between",
+    cardTitle: "text-sm font-semibold text-slate-500 uppercase tracking-wide",
+    cardValue: "text-2xl font-bold text-slate-800 mt-1.5",
+    cardFooter: "text-sm text-slate-500 mt-3",
+    iconContainer: (color) => {
+      const map = {
+        teal: "bg-violet-100",
+        green: "bg-emerald-100",
+        orange: "bg-rose-100",
+        blue: "bg-sky-100",
+      };
+      return `p-3 rounded-xl ${map[color] || "bg-slate-100"}`;
     },
-    expenseChange: (change) => change > 0 ? 'text-orange-600' : 'text-green-600',
+    icon: (color) => {
+      const map = {
+        teal: "text-violet-600 w-5 h-5",
+        green: "text-emerald-600 w-5 h-5",
+        orange: "text-rose-600 w-5 h-5",
+        blue: "text-sky-600 w-5 h-5",
+      };
+      return map[color] || "text-slate-600 w-5 h-5";
+    },
+  },
+
+  grid: {
+    main: "grid grid-cols-1 xl:grid-cols-3 gap-5",
+    leftColumn: "xl:col-span-2 space-y-5",
+    rightColumn: "space-y-5",
+  },
+
+  cards: {
+    base: "bg-white rounded-2xl p-5 shadow-sm border border-slate-100",
+    header: "flex items-center justify-between mb-5",
+    title: "text-lg font-bold text-slate-800 flex items-center gap-2",
+  },
+
+  transactions: {
+    cardHeader: "flex items-center justify-between mb-4",
+    cardTitle: "text-lg font-bold text-slate-800 flex items-center gap-2",
+    refreshButton: "p-2 hover:bg-slate-100 rounded-xl text-slate-500 hover:text-violet-600 transition-all",
+    refreshIcon: (loading) => `w-4 h-4 transition-all ${loading ? "animate-spin" : ""}`,
+    dataStackingInfo: "flex items-center gap-2 text-xs text-slate-400 mb-4 bg-slate-50 px-3 py-2 rounded-xl",
+    dataStackingIcon: "w-4 h-4 text-violet-400 flex-shrink-0",
+    listContainer: "space-y-1",
+    transactionItem: "flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 transition-all",
+    icon: "w-4 h-4 text-slate-500",
+    details: "ml-1",
+    description: "text-sm font-semibold text-slate-800",
+    meta: "text-xs text-slate-400 mt-0.5",
+    emptyState: "text-center py-10",
+    emptyIconContainer: "w-16 h-16 mx-auto mb-4 rounded-2xl bg-slate-100 flex items-center justify-center",
+    emptyIcon: "w-8 h-8 text-slate-300",
+    emptyText: "text-slate-400 font-medium",
+    viewAllContainer: "mt-2 pt-2 border-t border-slate-100",
+    viewAllButton: "w-full text-center py-2.5 text-violet-600 font-semibold hover:bg-violet-50 rounded-xl transition-all text-sm flex items-center justify-center gap-2",
+  },
+
+  categories: {
+    title: "text-lg font-bold text-slate-800 flex items-center gap-2 mb-4",
+    titleIcon: "w-5 h-5 text-violet-500",
+    list: "space-y-3",
+    categoryItem: "flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-50 transition-all",
+    categoryIconContainer: "p-2 bg-violet-100 rounded-lg",
+    categoryIcon: "w-4 h-4 text-violet-600",
+    categoryName: "text-sm font-semibold text-slate-700",
+    categoryAmount: "text-sm font-bold text-slate-800",
+    summaryContainer: "mt-5 pt-4 border-t border-slate-100",
+    summaryGrid: "grid grid-cols-2 gap-3",
+    summaryIncomeCard: "bg-emerald-50 rounded-xl p-3 border border-emerald-100",
+    summaryExpenseCard: "bg-rose-50 rounded-xl p-3 border border-rose-100",
+    summaryTitle: "text-xs font-semibold text-slate-500 uppercase tracking-wide",
+    summaryValue: "text-lg font-bold text-slate-800 mt-1",
+  },
+
+  colors: {
+    expenseChange: (change) => (change > 0 ? "text-rose-600" : "text-emerald-600"),
+    transaction: {
+      bg: (type) => (type === "income" ? "bg-emerald-100" : "bg-rose-100"),
+      text: (type) =>
+        type === "income"
+          ? "text-emerald-600 font-bold text-sm"
+          : "text-rose-600 font-bold text-sm",
+    },
   },
 };

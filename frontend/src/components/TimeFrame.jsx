@@ -4,19 +4,20 @@ const TimeFrameSelector = ({
   timeFrame,
   setTimeFrame,
   options,
-  color = "teal",
+  color = "violet",
   style = "default",
 }) => {
   const colorClass = {
-    teal: "bg-teal-500",
-    orange: "bg-orange-500",
-    cyan: "bg-cyan-500",
-  }[color];
+    violet: "bg-violet-600",
+    teal: "bg-violet-600",
+    orange: "bg-rose-500",
+    cyan: "bg-sky-500",
+    green: "bg-emerald-500",
+  }[color] || "bg-violet-600";
 
   const styleClass = {
-    default:
-      "flex gap-2 bg-white p-1 -mx-11 lg:-mx-0 md:-mx-0 rounded-xl border border-gray-200",
-    minimal: "flex gap-2",
+    default: "flex gap-1 bg-slate-100 p-1 -mx-11 lg:-mx-0 md:-mx-0 rounded-xl border border-slate-200",
+    minimal: "flex gap-1",
   }[style];
 
   return (
@@ -25,10 +26,10 @@ const TimeFrameSelector = ({
         <button
           key={frame}
           onClick={() => setTimeFrame(frame)}
-          className={`px-2  py-2 text-sm rounded-lg transition-all ${
+          className={`px-3 py-1.5 text-sm rounded-lg transition-all font-medium ${
             timeFrame === frame
-              ? `${colorClass} text-white`
-              : "text-gray-600 hover:bg-gray-100"
+              ? `${colorClass} text-white shadow-sm`
+              : "text-slate-500 hover:text-slate-800 hover:bg-white"
           }`}
         >
           {frame.charAt(0).toUpperCase() + frame.slice(1)}
@@ -39,6 +40,3 @@ const TimeFrameSelector = ({
 };
 
 export default TimeFrameSelector;
-
-//it shows the 3 boxes with the details
-// like Total Income,Average Income, Transactions

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { signupStyles } from "../assets/dummyStyles";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import { ArrowLeft, Eye, EyeOff, Lock, Mail, User } from "lucide-react";
+import { ArrowLeft, Eye, EyeOff, Lock, Mail, Sparkles, User } from "lucide-react";
 
 const Signup = ({ API_URL = "", onSignup }) => {
   const [name, setName] = useState("");
@@ -14,7 +14,6 @@ const Signup = ({ API_URL = "", onSignup }) => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  // to fetch profile
   const fetchProfile = async (token) => {
     if (!token) return null;
     const res = await axios.get(`${API_URL}/api/user/me`, {
@@ -33,29 +32,17 @@ const Signup = ({ API_URL = "", onSignup }) => {
     }
   };
 
-  //   to validate that all fields are filled by user or not
   const validateForm = () => {
     const newErrors = {};
-
-    if (!name.trim()) {
-      newErrors.name = "Name is required";
-    }
-    if (!email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.email = "Email is invalid";
-    }
-    if (!password) {
-      newErrors.password = "Password is required";
-    } else if (password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters";
-    }
-
+    if (!name.trim()) newErrors.name = "Name is required";
+    if (!email.trim()) newErrors.email = "Email is required";
+    else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = "Email is invalid";
+    if (!password) newErrors.password = "Password is required";
+    else if (password.length < 6) newErrors.password = "Password must be at least 6 characters";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  //   to signup
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors({});
@@ -72,7 +59,6 @@ const Signup = ({ API_URL = "", onSignup }) => {
       const token = data.token ?? null;
       let profile = data.user ?? null;
       if (!profile) {
-        // check for any extra fields returned that could be user info
         const copy = { ...data };
         delete copy.token;
         delete copy.user;
@@ -82,8 +68,7 @@ const Signup = ({ API_URL = "", onSignup }) => {
       if (!profile && token) {
         try {
           profile = await fetchProfile(token);
-        } catch (fetchErr) {
-          console.warn("Could not fetch profile after signup token:", fetchErr);
+        } catch {
           profile = null;
         }
       }
@@ -93,8 +78,7 @@ const Signup = ({ API_URL = "", onSignup }) => {
       if (typeof onSignup === "function") {
         try {
           onSignup(profile, rememberMe, token);
-        } catch (callErr) {
-          console.warn("onSignup threw:", callErr);
+        } catch {
           navigate("/");
         }
       } else {
@@ -102,7 +86,6 @@ const Signup = ({ API_URL = "", onSignup }) => {
       }
       setPassword("");
     } catch (err) {
-      console.error("Signup error:", err?.response || err);
       if (err.response?.data?.errors) {
         setErrors(err.response.data.errors);
       } else if (err.response?.data?.message) {
@@ -117,115 +100,97 @@ const Signup = ({ API_URL = "", onSignup }) => {
 
   return (
     <div className={signupStyles.pageContainer}>
-      <div className={signupStyles.cardContainer}>
-        <div className={signupStyles.header}>
-          <button
-            onClick={() => navigate(-1)}
-            className={signupStyles.backButton}
-          >
-            <ArrowLeft className=" w-5 h-5" />
-          </button>
+      {/* Background decorations */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-violet-500/20 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-indigo-500/20 rounded-full blur-3xl" />
+      </div>
 
-          <div className={signupStyles.avatar}>
-            <User className=" w-10 h-10 text-white" />
+      <div className={signupStyles.cardContainer}>
+        {/* Header */}
+        <div className={signupStyles.header}>
+          <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
+          <button onClick={() => navigate(-1)} className={signupStyles.backButton}>
+            <ArrowLeft className="w-5 h-5" />
+          </button>
+          <div className="relative">
+            <div className={signupStyles.avatar}>
+              <Sparkles className="w-10 h-10 text-white" />
+            </div>
+            <h1 className={signupStyles.headerTitle}>Create Account</h1>
+            <p className={signupStyles.headerSubtitle}>Join SpendWise to manage your finances</p>
           </div>
-          <h1 className={signupStyles.headerTitle}>Create Account</h1>
-          <p className={signupStyles.headerSubtitle}>
-            Join ExpenseTracker to manage your finances
-          </p>
         </div>
 
         <div className={signupStyles.formContainer}>
           {errors.api && <p className={signupStyles.apiError}>{errors.api}</p>}
 
           <form onSubmit={handleSubmit} noValidate>
-            <div className=" mb-6">
-              <label htmlFor="name" className={signupStyles.label}>
-                Full Name
-              </label>
+            {/* Full Name */}
+            <div className="mb-4">
+              <label htmlFor="name" className={signupStyles.label}>Full Name</label>
               <div className={signupStyles.inputContainer}>
                 <div className={signupStyles.inputIcon}>
-                  <User className=" w-5 h-5" />
+                  <User className="w-4 h-4" />
                 </div>
                 <input
                   type="text"
                   id="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className={`${signupStyles.input} ${
-                    errors.name ? "border-red-300" : "border-gray-200"
-                  }`}
+                  className={`${signupStyles.input} ${errors.name ? "border-red-300" : "border-slate-200"}`}
                   placeholder="John Doe"
                 />
               </div>
-
-              {errors.name && (
-                <p className={signupStyles.fieldError}>{errors.name}</p>
-              )}
+              {errors.name && <p className={signupStyles.fieldError}>{errors.name}</p>}
             </div>
 
-            <div className=" mb-6">
-              <label htmlFor="email" className={signupStyles.label}>
-                Email Address
-              </label>
+            {/* Email */}
+            <div className="mb-4">
+              <label htmlFor="email" className={signupStyles.label}>Email Address</label>
               <div className={signupStyles.inputContainer}>
                 <div className={signupStyles.inputIcon}>
-                  <Mail className=" w-5 h-5" />
+                  <Mail className="w-4 h-4" />
                 </div>
                 <input
                   type="email"
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className={`${signupStyles.input} ${
-                    errors.email ? "border-red-300" : "border-gray-200"
-                  }`}
-                  placeholder="your@example.com"
+                  className={`${signupStyles.input} ${errors.email ? "border-red-300" : "border-slate-200"}`}
+                  placeholder="you@example.com"
                 />
               </div>
-
-              {errors.email && (
-                <p className={signupStyles.fieldError}>{errors.email}</p>
-              )}
+              {errors.email && <p className={signupStyles.fieldError}>{errors.email}</p>}
             </div>
 
-            <div className=" mb-6">
-              <label htmlFor="password" className={signupStyles.label}>
-                Password
-              </label>
+            {/* Password */}
+            <div className="mb-4">
+              <label htmlFor="password" className={signupStyles.label}>Password</label>
               <div className={signupStyles.inputContainer}>
                 <div className={signupStyles.inputIcon}>
-                  <Lock className=" w-5 h-5" />
+                  <Lock className="w-4 h-4" />
                 </div>
                 <input
                   type={showPassword ? "text" : "password"}
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className={`${signupStyles.passwordInput} ${
-                    errors.password ? "border-red-300" : "border-gray-200"
-                  }`}
-                  placeholder="●●●●●●"
+                  className={`${signupStyles.passwordInput} ${errors.password ? "border-red-300" : "border-slate-200"}`}
+                  placeholder="Min. 6 characters"
                 />
-
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className={signupStyles.passwordToggle}
                 >
-                  {showPassword ? (
-                    <EyeOff className=" w-5 h-5" />
-                  ) : (
-                    <Eye className=" w-5 h-5" />
-                  )}
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
               </div>
-
-              {errors.password && (
-                <p className={signupStyles.fieldError}>{errors.password}</p>
-              )}
+              {errors.password && <p className={signupStyles.fieldError}>{errors.password}</p>}
             </div>
 
+            {/* Remember Me */}
             <div className={signupStyles.checkboxContainer}>
               <input
                 type="checkbox"
@@ -234,40 +199,19 @@ const Signup = ({ API_URL = "", onSignup }) => {
                 onChange={(e) => setRememberMe(e.target.checked)}
                 className={signupStyles.checkbox}
               />
-
-              <label htmlFor="remember" className={signupStyles.checkboxLabel}>
-                Remember Me
-              </label>
+              <label htmlFor="remember" className={signupStyles.checkboxLabel}>Remember me</label>
             </div>
 
             <button
               type="submit"
-              className={`${signupStyles.button} ${
-                isLoading ? signupStyles.buttonDisabled : ""
-              }`}
+              className={`${signupStyles.button} ${isLoading ? signupStyles.buttonDisabled : ""}`}
               disabled={isLoading}
             >
               {isLoading ? (
                 <>
-                  <svg
-                    className={signupStyles.spinner}
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    ></circle>
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2-647z"
-                    ></path>
+                  <svg className={signupStyles.spinner} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                   </svg>
                   Creating account...
                 </>
@@ -280,9 +224,7 @@ const Signup = ({ API_URL = "", onSignup }) => {
           <div className={signupStyles.signInContainer}>
             <p className={signupStyles.signInText}>
               Already have an account?{" "}
-              <Link to="/login" className={signupStyles.signInLink}>
-                Sign in
-              </Link>
+              <Link to="/login" className={signupStyles.signInLink}>Sign in</Link>
             </p>
           </div>
         </div>

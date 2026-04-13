@@ -48,8 +48,10 @@ const API_BASE = "/api";
 
 const getAuthHeader = () => {
   const token =
-    localStorage.getItem("token") || localStorage.getItem("authToken");
-  return token ? { Authorization: `Bearer ${token} ` } : {};
+    localStorage.getItem("token") ||
+    sessionStorage.getItem("token") ||
+    localStorage.getItem("authToken");
+  return token ? { Authorization: `Bearer ${token}` } : {};
 };
 
 // to convert date to ISO timeline
